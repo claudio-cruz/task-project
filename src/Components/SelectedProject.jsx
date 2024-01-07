@@ -1,7 +1,13 @@
 import React from 'react'
-import ProjectsSidebar from './ProjectsSidebar'
+import Tasks from './Tasks'
 
-function SelectedProject({ project, onDelete }) {
+function SelectedProject({
+	project,
+	onDelete,
+	onAddTask,
+	onDeleteTask,
+	tasks
+}) {
 
 	const formattedDate = new Date(project.dueDate).toLocaleDateString('en-us', {
 		year: 'numeric',
@@ -28,6 +34,7 @@ function SelectedProject({ project, onDelete }) {
 					{project.description}
 				</p>
 			</header>
+			<Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks} />
 		</div>
 	)
 }
